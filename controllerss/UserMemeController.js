@@ -29,6 +29,7 @@ router.get('/', async (req,res)=> {
 //add stock meme to db localhostjejdsjbjd/meme/ endpoint
 router.post('/', async (req, res)=> {
     try {
+        await UserMeme.findById(req.params.id).populate("stockMeme")
         const createdMeme = await UserMeme.create(req.body)
          res.status(201).json(createdMeme)
     } catch(error) {
