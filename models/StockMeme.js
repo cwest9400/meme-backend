@@ -6,5 +6,5 @@ const StockMemeSchema = new mongoose.Schema({
     tag: [],
 }, { timestamps: true });
 
-const Product = mongoose.model("StockMeme", StockSchema);
+const StockMeme = mongoose.model("StockMeme", StockMemeSchema);
 module.exports = StockMeme;

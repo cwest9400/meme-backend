@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { Meme } = require('../models')
+const { StockMeme } = require('../models')
 
 router.get(`/:id`, async (req, res, next) => {
     try {

@@ -1,7 +1,7 @@
 const express = require(`express`)
 const router = express.Router()
 
-const { User } = require(`../models`)
+const { UserMeme } = require(`../models`)
 
 router.get(`/:id`, async (req, res, next) => {
     try {
@@ -65,3 +65,5 @@ router.delete(`/:id`, async (req, res) => {
         res.status(400).json({ error: err.message })
     }
 })
+
+module.exports = router
