@@ -16,7 +16,7 @@ require("dotenv").config();
 require("./config/db.connection")
 // pull PORT from .env, give default value of 4000 and establish DB Connection
 // const {PORT}=process.env
-const PORT = process.env.MONGODB_URI || 4000
+const PORT = process.env.PORT || 4000
 
 app.use(express.json())
 app.use(cors())
