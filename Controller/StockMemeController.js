@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const { StockMeme } = require('../models')
+const StockMeme = require('../models/StockMeme')
+
 
 // http://localhost:4000/meme/:id - GET
 router.get('/:id', async (req,res)=> {
