@@ -2,10 +2,10 @@
   "name": "memeserver",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "run.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node run.js",
     "heroku-postbuild": "npm run build"
   },
   "keywords": [],
