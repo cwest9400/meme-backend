@@ -6,8 +6,8 @@ const app = express();
 const cors = require('cors')
 const morgan = require('morgan')
 
-// const productController = require('./controllers/product-controller')
-// const reviewController = require('./controllers/review-controller')
+const StockMemeController = require('./controllers/StockMemeController')
+const UserMemeController = require('./controllers/review-controller')
 
 
 // initialize .env variables
@@ -21,9 +21,9 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
 
-// app.use('/product', productController)
-// app.use('/review', reviewController)
-// app.get('/', (req, res)=>res.redirect('/product'))
+app.use('/meme', StockMemeController)
+app.use('/usermeme', UserMemeController)
+app.get('/', (req, res)=>res.redirect('/meme'))
 
 app.listen(PORT, ()=> {
     console.log(`listening on: ${PORT}`)
