@@ -6,8 +6,9 @@ const app = express();
 const cors = require('cors')
 const morgan = require('morgan')
 
-const StockMemeController = require('./controllers/StockMemeController')
-const UserMemeController = require('./controllers/review-controller')
+
+const StockMemeController = require('./controller/StockMemeController')
+const UserMemeController = require('./controller/UserMemeController')
 
 
 // initialize .env variables
@@ -21,8 +22,8 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
 
-app.use('/meme', StockMemeController)
-app.use('/usermeme', UserMemeController)
+app.use('/meme', StockMemeController )
+app.use('/usermeme', UserMemeController )
 app.get('/', (req, res)=>res.redirect('/meme'))
 
 app.listen(PORT, ()=> {
