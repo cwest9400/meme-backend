@@ -6,14 +6,14 @@ const app = express();
 const cors = require('cors')
 const morgan = require('morgan')
 
+require("dotenv").config();
+require("./config/db.connection")
 
 const StockMemeController = require('./controller/StockMemeController')
 const UserMemeController = require('./controller/UserMemeController')
 
 
 // initialize .env variables
-require("dotenv").config();
-require("./config/db.connection")
 // pull PORT from .env, give default value of 4000 and establish DB Connection
 // const {PORT}=process.env
 const PORT = process.env.PORT || 4000
