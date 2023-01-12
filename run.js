@@ -16,7 +16,7 @@ const UserMemeController = require('./controller/UserMemeController')
 // initialize .env variables
 // pull PORT from .env, give default value of 4000 and establish DB Connection
 // const {PORT}=process.env
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT
 
 app.use(express.json())
 app.use(cors())
