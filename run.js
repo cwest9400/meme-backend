@@ -10,8 +10,8 @@ const morgan = require('morgan')
 require("dotenv").config();
 require("./config/db.connection")
 
-const StockMemeController = require('./controller/StockMemeController')
-const UserMemeController = require('./controller/UserMemeController')
+const StockMemeController = require('./controllerss/StockMemeController')
+const UserMemeController = require('./controllerss/UserMemeController')
 
 
 // initialize .env variables
