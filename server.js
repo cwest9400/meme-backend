@@ -24,7 +24,7 @@ app.use(morgan('dev'))
 
 app.use('/meme', StockMemeController )
 app.use('/usermeme', UserMemeController )
-app.get('/', (req, res)=>res.redirect('/meme'))
+app.get('/', (req, res)=>res.send('sanitycheck'))
 
 app.listen(PORT, ()=> {
     console.log(`listening on: ${PORT}`)
