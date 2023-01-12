@@ -6,6 +6,7 @@ const app = express();
 const cors = require('cors')
 const morgan = require('morgan')
 
+
 const StockMemeController = require('./controller/StockMemeController')
 const UserMemeController = require('./controller/UserMemeController')
 

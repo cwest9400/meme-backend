@@ -3,64 +3,59 @@ const router = express.Router()
 
 const { StockMeme } = require('../models')
 
-router.get(`/:id`, async (req, res, next) => {
+// http://localhost:4000/meme/:id - GET
+router.get('/:id', async (req,res)=> {
+    
     try {
-        const foundPost = await Post.findById(req.params.id) // .populate (username)
-        console.log(foundPost)
-        console.log(`[${new Date().toLocaleTimeString()}] - Showed post: "${foundPost.description}"`)
-        res.status(200).json(foundPost)
-        // res.status(200).json({message: `Here is post ID ${req.params.id}`})
-    }
-    catch(err) {
-        console.error(err)
-        return next(err)
+
+        const foundMeme = await StockMeme.findById(req.params.id)
+        res.status(200).json(foundMeme)
+
+    }catch (err) {
+        res.status(400).json({error: err})
     }
 })
 
-router.get(`/`, async (req, res, next) => {
+//get all stock memes /meme
+router.get('/', async (req,res)=> {
     try {
-        console.log(`[${new Date().toLocaleTimeString()}] - Accessed the post creation page`)
-        res.status(200).json({message: `This is the post creation page`})
+        const allMemes = await StockMeme.find({})
+        res.status(200).json(allMemes)
+    } catch (err){
+        res.status(400).json({error: err})
     }
-    catch(err) {
-        console.error(err)
-        return next(err)
+})
+//add stock meme to db localhostjejdsjbjd/meme/ endpoint
+router.post('/', async (req, res)=> {
+    try {
+        const stockMeme = await StockMeme.create(req.body)
+        console.log(stockMeme)
+        res.status(201).json(stockMeme)
+    } catch(error) {
+        console.error(error)
     }
 })
 
-router.post(`/`, async (req, res) => {
+//update product route
+router.put('/:id', async (req, res, next)=>{
     try {
-       
-        console.log(`[${new Date().toLocaleTimeString()}] - Created the above post`)
-        res.status(201).redirect(`/`)
-    }
-    catch(err) {
-        res.status(400).json({error: err.message})
+        const updatedMeme = await StockMeme.findByIdAndUpdate(req.params.id, req.body, {new: true})  
+        return res.status(200).json(updatedMeme)
+    } catch(error) {
+        console.error(error)
+        return next(error)
     }
 })
 
-router.put(`/:id`, async (req, res) => {
+//delete stock meme //need _id from mongoDB
+router.delete('/:id', async (req,res,next)=> {
     try {
-        
-        const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
-        console.log(`Updated post ID ${req.params.id}:`, updatedPost)
-        console.log(`[${new Date().toLocaleTimeString()}] - "Updated" post ID ${req.params.id}`)
-        res.status(200).json(updatedPost) 
-    }
-    catch(err) {
-        res.status(400).json({error: err.message})
-    }
-})
-
-router.delete(`/:id`, async (req, res) => {
-    try {
-        const deletedPost = await Post.findByIdAndDelete(req.params.id)
-        console.log(`Deleted:`, deletedPost.description)
-        console.log(`[${new Date().toLocaleTimeString()}] - "Deleted" post ID ${req.params.id}`)
-        res.status(200).json(deletedPost)
-    }
-    catch(err) {
-        res.status(400).json({error: err.message})
+        const deletedMeme = await StockMeme.findByIdAndDelete(req.params.id)
+        console.log(deletedMeme)
+        res.redirect('/meme')
+    } catch(error) {
+        console.error(error)
+        return next(error)
     }
 })
 
